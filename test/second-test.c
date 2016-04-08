@@ -3,7 +3,7 @@
 
 TEST(second, expect_int_eq) { EXPECT_INT_EQ(1, 1); }
 
-TEST(second, expect_str_eq) { EXPECT_STR_EQ("HELLO", "HELLO"); }
+TEST(second, expect_str_eq) { EXPECT_STR_EQ("HELLO", "WORLD"); }
 
 TEST(second, expect_false) {
   EXPECT_FALSE(false);
