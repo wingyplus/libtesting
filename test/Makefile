@@ -1,6 +1,9 @@
+all: clean test
 test:
 	@gcc -I../include -I../libs/include $(shell pkg-config --libs --cflags cmocka) matcher-test.c -o matcher-test && \
-		./matcher-test 2>&1 | sed s/OK/$(shell printf "\033[32mOK\033[0m")/
+	echo matcher-test >> test.list
+	./runner
 
 clean:
-	rm -rf matcher-test *.o
+	rm -rf matcher-test *.o test.list
+.PHONY: test
