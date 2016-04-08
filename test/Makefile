@@ -1,9 +1,16 @@
-all: clean test
-test:
-	@gcc -I../include -I../libs/include $(shell pkg-config --libs --cflags cmocka) matcher-test.c -o matcher-test && \
-	echo matcher-test >> test.list
+TEST = matcher-test \
+       second-test
+
+all: clean $(TEST) run
+.PHONY: all
+
+$(TEST):
+	@gcc -I../include -I../libs/include $(shell pkg-config --libs --cflags cmocka) $@.c -o $@ && \
+	echo $@ >> test.list
+
+run:
 	./runner
 
 clean:
-	rm -rf matcher-test *.o test.list
+	rm -rf $(TEST) *.o test.list
 .PHONY: test
