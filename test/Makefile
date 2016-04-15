@@ -13,4 +13,5 @@ run:
 
 clean:
 	rm -rf $(TEST) *.o test-result.txt
-.PHONY: test
+
+.PHONY: run
