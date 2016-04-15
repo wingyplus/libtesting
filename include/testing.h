@@ -22,28 +22,28 @@
 #define TEST_ENTRY(subject, name) cmocka_unit_test(test_##subject##_##name),
 
 #define EXPECT_STR_EQ(actual, expected) \
-  {                                     \
+  ({                                    \
     const char *a = actual;             \
     const char *e = expected;           \
     assert_string_equal((a), (e));      \
-  }
+  })
 
 #define EXPECT_INT_EQ(actual, expected) \
-  {                                     \
+  ({                                    \
     int a = actual, e = expected;       \
     assert_int_equal((a), (e));         \
-  }
+  })
 
 #define EXPECT_TRUE(expr) \
-  {                       \
+  ({                      \
     bool e = expr;        \
     assert_true((e));     \
-  }
+  })
 
 #define EXPECT_FALSE(expr) \
-  {                        \
+  ({                       \
     bool e = expr;         \
     assert_false((e));     \
-  }
+  })
 
 #endif /* TESTING_H_ */
