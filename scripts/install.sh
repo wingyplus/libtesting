@@ -4,7 +4,11 @@ install_cmocka() {
   git clone git://git.cryptomilk.org/projects/cmocka.git .deps/cmocka
   mkdir -p .build-deps
   cd .build-deps
-  cmake -DCMAKE_INSTALL_PREFIX=../libs/cmocka -DWITH_STATIC_LIB=ON ../.deps/cmocka
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=../libs/cmocka \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_STATIC_LIB=ON \
+    ../.deps/cmocka
   make && make install
   cd ..
   rm -rf .build-deps
