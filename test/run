@@ -2,6 +2,6 @@
 COLOR='| sed "s/\(OK\)/[32m\1[0m/g;s/\(PASSED\)/[32m\1[0m/g;s/\([^\[]*FAILED\)/[31m\1[0m/g;"'
 while read line
 do
-    echo $line
-	eval "./$line 2>&1" $COLOR
-done<test.list
+  echo $line
+  eval "./$line 2>&1" $COLOR
+done < test-result.txt

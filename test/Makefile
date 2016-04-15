@@ -6,11 +6,11 @@ all: clean $(TEST) run
 
 $(TEST):
 	@gcc -I../include -I../libs/include $(shell pkg-config --libs --cflags cmocka) $@.c -o $@ && \
-	echo $@ >> test.list
+	echo $@ >> test-result.txt
 
 run:
-	./runner
+	./run
 
 clean:
-	rm -rf $(TEST) *.o test.list
+	rm -rf $(TEST) *.o test-result.txt
 .PHONY: test
