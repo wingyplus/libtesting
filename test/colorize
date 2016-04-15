@@ -4,4 +4,4 @@ while read line
 do
   echo $line
   eval "./$line 2>&1" $COLOR
-done < test-result.txt
+done

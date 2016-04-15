@@ -1,17 +1,13 @@
-TEST = matcher-test \
-       second-test
+TESTS = matcher-test \
+	second-test
 
-all: clean $(TEST) run
-.PHONY: all
+all: clean $(TESTS)
 
-$(TEST):
+$(TESTS):
 	@gcc -I../include -I../libs/include $(shell pkg-config --libs --cflags cmocka) $@.c -o $@ && \
-	echo $@ >> test-result.txt
-
-run:
-	./run
+	echo $@ | ./colorize
 
 clean:
-	rm -rf $(TEST) *.o test-result.txt
+	@rm -rf $(TESTS) *.o test-result.txt
 
-.PHONY: run
+.PHONY: $(TESTS)
