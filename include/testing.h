@@ -9,6 +9,8 @@
 #include <cmocka.h>
 
 #define TEST(subject, name) static void test_##subject##_##name(void **state)
+#define SETUP(subject, name) static int setup_##subject##_##name(void **state)
+#define TEARDOWN(subject, name) static int teardown_##subject##_##name(void **state)
 
 #define START_RUN_TESTS              \
   int main(int argc, char *argv[]) { \
@@ -19,7 +21,11 @@
   return cmocka_run_group_tests(tests, NULL, NULL); \
   }
 
-#define TEST_ENTRY(subject, name) cmocka_unit_test(test_##subject##_##name),
+#define GET_MACRO(_1,_2,_3,_4,NAME,...) NAME
+#define TEST_ENTRY(...) GET_MACRO(__VA_ARGS__, TEST_ENTRY_WITH_SETUP_TEAR_DOWN, TEST_ENTRY_WITH_SETUP, TEST_ENTRY_WITHOUT_SETUP_TEARDOWN)(__VA_ARGS__)
+#define TEST_ENTRY_WITHOUT_SETUP_TEARDOWN(subject, name) cmocka_unit_test(test_##subject##_##name),
+#define TEST_ENTRY_WITH_SETUP(subject, name, setup) cmocka_unit_test_setup(test_##subject##_##name, setup_##subject##_##name),
+#define TEST_ENTRY_WITH_SETUP_TEAR_DOWN(subject, name, setup, teardown) cmocka_unit_test_setup_teardown(test_##subject##_##name, setup_##subject##_##setup, teardown_##subject##_##teardown),
 
 #define EXPECT_STR_EQ(actual, expected) \
   ({                                    \
