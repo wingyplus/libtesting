@@ -59,4 +59,8 @@
     assert_false((e));     \
   })
 
+#define EXPECT_PTR_EQ(p1, p2) ({ assert_ptr_equal(p1, p2); })
+
+#define EXPECT_PTR_NOT_EQ(p1, p2) ({ assert_ptr_not_equal(p1, p2); })
+
 #endif /* TESTING_H_ */

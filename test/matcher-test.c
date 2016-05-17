@@ -21,6 +21,20 @@ TEST(matcher, expect_true) {
   EXPECT_TRUE(1 == 1);
 }
 
+TEST(matcher, expect_ptr_eq) {
+  int a = 1;
+  int *b = &a, *c = &a;
+
+  EXPECT_PTR_EQ(b, c);
+}
+
+TEST(matcher, expect_ptr_not_eq) {
+  int a = 1, d = 2;
+  int *b = &a, *c = &d;
+
+  EXPECT_PTR_NOT_EQ(b, c);
+}
+
 START_RUN_TESTS {
   TEST_ENTRY(matcher, expect_int_eq)
   TEST_ENTRY(matcher, expect_int_not_eq)
@@ -28,5 +42,7 @@ START_RUN_TESTS {
   TEST_ENTRY(matcher, expect_str_not_eq)
   TEST_ENTRY(matcher, expect_false)
   TEST_ENTRY(matcher, expect_true)
+  TEST_ENTRY(matcher, expect_ptr_eq)
+  TEST_ENTRY(matcher, expect_ptr_not_eq)
 }
 END_RUN_TESTS
