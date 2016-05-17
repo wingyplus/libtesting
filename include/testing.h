@@ -28,6 +28,13 @@
     assert_string_equal((a), (e));      \
   })
 
+#define EXPECT_STR_NOT_EQ(actual, expected) \
+  ({                                        \
+    const char *a = actual;                 \
+    const char *e = expected;               \
+    assert_string_not_equal((a), (e));      \
+  })
+
 #define EXPECT_INT_EQ(actual, expected) \
   ({                                    \
     int a = actual, e = expected;       \

@@ -7,6 +7,8 @@ TEST(matcher, expect_int_not_eq) { EXPECT_INT_NOT_EQ(1, 2); }
 
 TEST(matcher, expect_str_eq) { EXPECT_STR_EQ("HELLO", "HELLO"); }
 
+TEST(matcher, expect_str_not_eq) { EXPECT_STR_NOT_EQ("HELLO", "WORLD"); }
+
 TEST(matcher, expect_false) {
   EXPECT_FALSE(false);
   EXPECT_FALSE(0);
@@ -23,6 +25,7 @@ START_RUN_TESTS {
   TEST_ENTRY(matcher, expect_int_eq)
   TEST_ENTRY(matcher, expect_int_not_eq)
   TEST_ENTRY(matcher, expect_str_eq)
+  TEST_ENTRY(matcher, expect_str_not_eq)
   TEST_ENTRY(matcher, expect_false)
   TEST_ENTRY(matcher, expect_true)
 }
