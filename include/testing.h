@@ -34,6 +34,12 @@
     assert_int_equal((a), (e));         \
   })
 
+#define EXPECT_INT_NOT_EQ(actual, expected) \
+  ({                                        \
+    int a = actual, e = expected;           \
+    assert_int_not_equal((a), (e));         \
+  })
+
 #define EXPECT_TRUE(expr) \
   ({                      \
     bool e = expr;        \
